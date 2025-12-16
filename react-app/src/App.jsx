@@ -1,38 +1,44 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useState } from "react";
-import Header from "./components/Header/Header";
 import HomePage from "./pages/HomePage/HomePage";
 import CartPage from "./pages/CartPage/CartPage";
 import CheckoutPage from "./pages/CheckoutPage/CheckoutPage";
-
-function Contact() {
-  return <h1>Contact Page</h1>;
-}
+import { Contact } from "./pages/ContactPage/ContactPage";
+import { NotFound } from "./pages/NotFound/NotFound";
+import { Layout } from "./components/Layout/Layout";
 
 function App() {
+  // Global shopping cart state — lives here so Header and pages can access it
+  // cartItems = array of products added by user
+  // setCartItems = function to update the cart
   const [cartItems, setCartItems] = useState([]);
+  // Function to add a product to the cart
+  // Uses functional update to always have the latest state (safe even with rapid clicks)
+  const addToCart = (product) => {
+    setCartItems((prev) => [...prev, product]);
+  };
 
   return (
+    // BrowserRouter enables routing — different URLs show different pages:
     <BrowserRouter>
-      <Header cartCount={cartItems.length} />
-      <div className="container">
+      {/* Full height flex container — pushes footer to bottom */}
+      <div className="d-flex flex-column min-vh-100">
+        {/* All normal pages use Layout (Header + Footer automatically) */}
         <Routes>
-          <Route
-            path="/"
-            element={
-              <HomePage
-                addToCart={(product) => setCartItems([...cartItems, product])}
-              />
-            }
-          />
-          <Route path="/cart" element={<CartPage cartItems={cartItems} />} />
-          <Route path="/checkout" element={<CheckoutPage />} />
-          <Route path="/contact" element={<Contact />} />
+          <Route element={<Layout cartCount={cartItems.length} />}>
+            <Route path="/" element={<HomePage addToCart={addToCart} />} />
+            <Route path="/cart" element={<CartPage cartItems={cartItems} />} />
+            <Route path="/checkout" element={<CheckoutPage />} />
+            <Route path="/contact" element={<Contact />} />
+          </Route>
+
+          {/* 404 page — no Layout */}
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </div>
     </BrowserRouter>
   );
 }
 
-export default App;
+export default App; // Makes this component available to index.js
