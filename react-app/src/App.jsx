@@ -4,9 +4,10 @@ import { useState } from "react";
 import HomePage from "./pages/HomePage/HomePage";
 import CartPage from "./pages/CartPage/CartPage";
 import CheckoutPage from "./pages/CheckoutPage/CheckoutPage";
-import { Contact } from "./pages/ContactPage/ContactPage";
+import Contact from "./pages/ContactPage/ContactPage";
 import { NotFound } from "./pages/NotFound/NotFound";
 import { Layout } from "./components/Layout/Layout";
+import AboutPage from "./pages/AboutPage/AboutPage";
 
 function App() {
   // Global shopping cart state — lives here so Header and pages can access it
@@ -29,6 +30,7 @@ function App() {
           <Route element={<Layout cartCount={cartItems.length} />}>
             <Route path="/" element={<HomePage addToCart={addToCart} />} />
             <Route path="/cart" element={<CartPage cartItems={cartItems} />} />
+            <Route path="/about" element={<AboutPage />} />
             <Route path="/checkout" element={<CheckoutPage />} />
             <Route path="/contact" element={<Contact />} />
           </Route>
