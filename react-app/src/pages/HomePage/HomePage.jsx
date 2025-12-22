@@ -56,7 +56,10 @@ function HomePage({ addToCart }) {
                       <strong className="text-primary">${product.price}</strong>
                       <button
                         className="btn btn-primary btn-sm"
-                        onClick={addToCart}
+                        onClick={() => {
+                          console.log("Adding:", product);
+                          addToCart(product);
+                        }}
                       >
                         Add
                       </button>

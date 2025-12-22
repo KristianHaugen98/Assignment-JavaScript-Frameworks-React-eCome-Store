@@ -17,7 +17,7 @@ const AboutPage = () => {
       <section className="text-center mb-5 p-5 bg-light rounded-3">
         <h1 className="display-4 fw-bold">About Our Company</h1>
         <p className="lead text-muted">
-          Innovating the future of web development since 2020.
+          Innovating the future of web development since 2023.
         </p>
         <Button as="a" href="contact" variant="primary" size="lg">
           Contact us

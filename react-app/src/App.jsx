@@ -19,6 +19,10 @@ function App() {
   const addToCart = (product) => {
     setCartItems((prev) => [...prev, product]);
   };
+  // Function to remove items from cart page:
+  const removeFromCart = (idToRemove) => {
+    setCartItems((prev) => prev.filter((item) => item.id !== idToRemove));
+  };
 
   return (
     // BrowserRouter enables routing — different URLs show different pages:
@@ -29,7 +33,15 @@ function App() {
         <Routes>
           <Route element={<Layout cartCount={cartItems.length} />}>
             <Route path="/" element={<HomePage addToCart={addToCart} />} />
-            <Route path="/cart" element={<CartPage cartItems={cartItems} />} />
+            <Route
+              path="/cart"
+              element={
+                <CartPage
+                  cartItems={cartItems}
+                  removeFromCart={removeFromCart}
+                />
+              }
+            />
             <Route path="/about" element={<AboutPage />} />
             <Route path="/checkout" element={<CheckoutPage />} />
             <Route path="/contact" element={<Contact />} />
