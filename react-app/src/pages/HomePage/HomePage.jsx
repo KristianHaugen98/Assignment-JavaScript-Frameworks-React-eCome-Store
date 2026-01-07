@@ -1,9 +1,13 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 // UseState for products:
 function HomePage({ addToCart }) {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
+  // For search functionality:
+  const [searchTerm, setSearchTerm] = useState("");
+
   // UseEffect for fetch products, and have loading state thats showing loading animation before the products are fetched:
   useEffect(() => {
     setLoading(true);
@@ -19,10 +23,34 @@ function HomePage({ addToCart }) {
         setLoading(false);
       });
   }, []);
+  // Filter products for search suggestions
+  const filteredProducts = products.filter((product) =>
+    product.title.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+  const createSlug = (title) => {
+    return title
+      .toLowerCase()
+      .replace(/\s+/g, "-")
+      .replace(/[^\w\-]+/g, "")
+      .replace(/\-\-+/g, "-");
+  };
 
   return (
     <div className="container py-4">
       <h1 className="mb-5 text-center">All Products</h1>
+      {/* Search input and suggestions dropdown */}
+      <div className="position-relative mb-4 max-w-md mx-auto">
+        <input
+          type="text"
+          placeholder="Search products..."
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          className="form-control form-control-lg"
+        />
+
+        {/* Dropdown suggestions */}
+      </div>
       {loading ? (
         // ← Loading message
         <div className="text-center py-20">
@@ -37,7 +65,7 @@ function HomePage({ addToCart }) {
       ) : (
         <div className="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-5 row-cols-xl-6 g-3">
           {/* Renders the products with .map: */}
-          {products.map((product) => (
+          {filteredProducts.map((product) => (
             <div key={product.id} className="col">
               <div
                 className="card h-100 d-flex flex-column"
