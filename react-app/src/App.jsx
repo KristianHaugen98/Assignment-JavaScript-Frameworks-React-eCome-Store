@@ -8,7 +8,7 @@ import Contact from "./pages/ContactPage/ContactPage";
 import { NotFound } from "./pages/NotFound/NotFound";
 import { Layout } from "./components/Layout/Layout";
 import AboutPage from "./pages/AboutPage/AboutPage";
-
+import ProductPage from "./pages/ProductPage/ProductPage";
 function App() {
   // Global shopping cart state — lives here so Header and pages can access it
   // cartItems = array of products added by user
@@ -41,6 +41,10 @@ function App() {
                   removeFromCart={removeFromCart}
                 />
               }
+            />
+            <Route
+              path="/product/:slug"
+              element={<ProductPage addToCart={addToCart} />}
             />
             <Route path="/about" element={<AboutPage />} />
             <Route path="/checkout" element={<CheckoutPage />} />
