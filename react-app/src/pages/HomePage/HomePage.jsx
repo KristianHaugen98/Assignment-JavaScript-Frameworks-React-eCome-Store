@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 // UseState for products:
 function HomePage({ addToCart }) {
@@ -68,18 +69,29 @@ function HomePage({ addToCart }) {
                 />
                 <div className="card-body d-flex flex-column flex-grow-1">
                   <h6 className="card-title text-truncate">{product.title}</h6>
+
                   <div className="mt-auto">
-                    <div className="d-flex justify-content-between align-items-center">
+                    <div className="mb-2">
                       <strong className="text-primary">${product.price}</strong>
+                    </div>
+                    {/* Add to cart and view product that thakes user to product detail page */}
+                    <div className="d-flex gap-2">
                       <button
-                        className="btn btn-primary btn-sm"
+                        className="btn btn-primary btn-sm flex-grow-1"
                         onClick={() => {
                           console.log("Adding:", product);
                           addToCart(product);
                         }}
                       >
-                        Add
+                        Add to Cart
                       </button>
+
+                      <Link
+                        to={`/product/${createSlug(product.title)}`}
+                        className="btn btn-secondary btn-sm flex-grow-1"
+                      >
+                        View Product
+                      </Link>
                     </div>
                   </div>
                 </div>
