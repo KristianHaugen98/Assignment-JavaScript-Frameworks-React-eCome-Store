@@ -23,6 +23,7 @@ function HomePage({ addToCart }) {
       });
   }, []);
   // Filter products for search suggestions
+  const [searchTerm, setSearchTerm] = useState("");
   const filteredProducts = products.filter((product) =>
     product.title.toLowerCase().includes(searchTerm.toLowerCase())
   );
@@ -53,7 +54,7 @@ function HomePage({ addToCart }) {
         // Products loaded — show grid
         <div className="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-5 row-cols-xl-6 g-3">
           {/* Renders the products with .map: */}
-          {products.map((product) => (
+          {filteredProducts.map((product) => (
             <div key={product.id} className="col">
               <div
                 className="card h-100 d-flex flex-column"
@@ -83,12 +84,11 @@ function HomePage({ addToCart }) {
                   </div>
                 </div>
               </div>
-            );
-          })}
+            </div>
+          ))}
         </div>
       )}
     </div>
   );
 }
-
 export default HomePage;
