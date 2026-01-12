@@ -42,6 +42,7 @@ function App() {
                 />
               }
             />
+            {/* Single product route using product.id */}
             <Route
               path="/product/:id"
               element={
