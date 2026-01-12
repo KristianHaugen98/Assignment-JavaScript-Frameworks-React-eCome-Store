@@ -2,8 +2,9 @@ import { useParams, Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 function ProductPage({ addToCart }) {
-  // Get the slug from the URL:
-  const { slug } = useParams();
+  // Get the id from the URL:
+  const { id } = useParams();
+  console.log("URL id:", id, typeof id);
 
   // State for products and loading:
   const [products, setProducts] = useState([]);
@@ -25,14 +26,7 @@ function ProductPage({ addToCart }) {
   }, []); // Empty array = run only once on mount
 
   // Find the matching product (only after products are loaded)
-  const product = products.find((p) => {
-    const computedSlug = p.title
-      .toLowerCase()
-      .replace(/\s+/g, "-")
-      .replace(/[^\w\-]+/g, "")
-      .replace(/\-\-+/g, "-");
-    return computedSlug === slug;
-  });
+  const product = products.find((p) => String(p.id) === id);
 
   return (
     <div className="container py-5">

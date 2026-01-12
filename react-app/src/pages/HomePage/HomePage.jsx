@@ -6,6 +6,7 @@ function HomePage({ addToCart }) {
   const [products, setProducts] = useState([]);
   // State for loading indicator — starts true so we show spinner
   const [loading, setLoading] = useState(true);
+
   // UseEffect for fetch products, and have loading state thats showing loading animation before the products are fetched:
   useEffect(() => {
     setLoading(true);
@@ -29,18 +30,20 @@ function HomePage({ addToCart }) {
     product.title.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  const createSlug = (title) => {
-    return title
-      .toLowerCase()
-      .replace(/\s+/g, "-")
-      .replace(/[^\w\-]+/g, "")
-      .replace(/\-\-+/g, "-");
-  };
-
   return (
     // Main container with padding
     <div className="container py-4">
       <h1 className="mb-5 text-center">All Products</h1>
+      {/* Search input*/}
+      <div className="position-relative mb-4 max-w-md mx-auto">
+        <input
+          type="text"
+          placeholder="Search products..."
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          className="form-control form-control-lg"
+        />
+      </div>
       {loading ? (
         // Loading state — centered spinner
         <div className="text-center py-20">
@@ -87,7 +90,7 @@ function HomePage({ addToCart }) {
                       </button>
 
                       <Link
-                        to={`/product/${createSlug(product.title)}`}
+                        to={`/product/${product.id}`}
                         className="btn btn-secondary btn-sm flex-grow-1"
                       >
                         View Product

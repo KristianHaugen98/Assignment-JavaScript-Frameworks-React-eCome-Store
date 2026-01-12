@@ -43,8 +43,12 @@ function App() {
               }
             />
             <Route
-              path="/product/:slug"
-              element={<ProductPage addToCart={addToCart} />}
+              path="/product/:id"
+              element={
+                <>
+                  <ProductPage addToCart={addToCart} />
+                </>
+              }
             />
             <Route path="/about" element={<AboutPage />} />
             <Route path="/checkout" element={<CheckoutPage />} />
