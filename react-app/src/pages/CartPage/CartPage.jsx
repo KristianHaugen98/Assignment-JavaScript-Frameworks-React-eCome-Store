@@ -55,7 +55,19 @@ function CartPage({ cartItems, removeFromCart }) {
           </li>
         ))}
       </ul>
-
+      {/* Calculate and show total */}
+      <div className="d-flex justify-content-between align-items-center mb-4">
+        <h4>Total:</h4>
+        <h4 className="text-success">
+          $
+          {cartItems
+            .reduce((sum, item) => {
+              const price = item.discountedPrice || item.price;
+              return sum + price;
+            }, 0)
+            .toFixed(2)}
+        </h4>
+      </div>
       <Link to="/checkout" className="btn btn-success btn-lg">
         Proceed to Checkout
       </Link>
