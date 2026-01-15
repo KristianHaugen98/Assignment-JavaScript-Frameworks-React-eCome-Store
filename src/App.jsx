@@ -1,9 +1,10 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useState } from "react";
+import { useCallback } from "react";
 import HomePage from "./pages/HomePage/HomePage";
 import CartPage from "./pages/CartPage/CartPage";
-import CheckoutPage from "./pages/CheckoutPage/CheckoutPage";
+import CheckoutSuccessPage from "./pages/CheckoutPage/CheckoutSuccessPage";
 import Contact from "./pages/ContactPage/ContactPage";
 import { NotFound } from "./pages/NotFound/NotFound";
 import { Layout } from "./components/Layout/Layout";
@@ -23,6 +24,8 @@ function App() {
   const removeFromCart = (idToRemove) => {
     setCartItems((prev) => prev.filter((item) => item.id !== idToRemove));
   };
+
+  const clearCart = useCallback(() => setCartItems([]), []);
 
   return (
     // BrowserRouter enables routing — different URLs show different pages:
@@ -52,7 +55,10 @@ function App() {
               }
             />
             <Route path="/about" element={<AboutPage />} />
-            <Route path="/checkout" element={<CheckoutPage />} />
+            <Route
+              path="/checkout"
+              element={<CheckoutSuccessPage clearCart={clearCart} />}
+            />
             <Route path="/contact" element={<Contact />} />
           </Route>
 

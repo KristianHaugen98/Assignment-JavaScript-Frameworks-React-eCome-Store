@@ -7,7 +7,7 @@ const AboutPage = () => {
     {
       name: "Kristian Haugen",
       role: "CEO & Founder",
-      image: "/images/me.png",
+      image: "/images/me.jpg",
     },
   ];
 
