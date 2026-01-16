@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 // This is the chekcoutPage
 function CheckoutSuccessPage({ clearCart }) {
   useEffect(() => {
-    clearCart(); // Clears cart when page loads
-  }, []);
+    clearCart();
+  }, [clearCart]); // Includes clearCart
   return (
     <div className="container py-5 text-center">
       <h1 className="text-success mb-4">Order Successful!</h1>
