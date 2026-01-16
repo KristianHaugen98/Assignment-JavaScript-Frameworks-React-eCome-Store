@@ -34,7 +34,24 @@ function HomePage({ addToCart }) {
     // Main container with padding
     <div className="container py-4">
       <h1 className="mb-5 text-center">All Products</h1>
-      {/* Search input*/}
+      {/* Search input and dropdown suggestions */}
+      {searchTerm && filteredProducts.length > 0 && (
+        <div
+          className="position-relative bg-white border shadow mt-1 w-100 z-10"
+          style={{ maxHeight: "200px", overflowY: "auto" }}
+        >
+          {filteredProducts.map((product) => (
+            <Link
+              key={product.id}
+              to={`/product/${product.id}`}
+              className="d-block px-3 py-2 text-decoration-none text-dark hover-bg-light"
+              onClick={() => setSearchTerm("")} // Clear input after click
+            >
+              {product.title}
+            </Link>
+          ))}
+        </div>
+      )}
       <div className="position-relative mb-4 max-w-md mx-auto">
         <input
           type="text"
@@ -56,7 +73,7 @@ function HomePage({ addToCart }) {
         </div>
       ) : (
         // Products loaded — show grid
-        <div className="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-5 row-cols-xl-6 g-3">
+        <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 g-3">
           {/* Renders the products with .map: */}
           {filteredProducts.map((product) => (
             <div key={product.id} className="col">
@@ -75,7 +92,30 @@ function HomePage({ addToCart }) {
 
                   <div className="mt-auto">
                     <div className="mb-2">
-                      <strong className="text-primary">${product.price}</strong>
+                      {/* Shows orignial price as well as discounted price with how */}
+                      {product.discountedPrice &&
+                      product.discountedPrice < product.price ? (
+                        <div className="d-flex align-items-center gap-2">
+                          <del className="text-muted small">
+                            ${product.price}
+                          </del>
+                          <strong className="text-success">
+                            ${product.discountedPrice}
+                          </strong>
+                          <span className="badge bg-danger ms-2 small">
+                            -
+                            {Math.round(
+                              100 -
+                                (product.discountedPrice / product.price) * 100
+                            )}
+                            %
+                          </span>
+                        </div>
+                      ) : (
+                        <strong className="text-primary">
+                          ${product.price}
+                        </strong>
+                      )}
                     </div>
                     {/* Add to cart and view product that thakes user to product detail page */}
                     <div className="d-flex gap-2">

@@ -10,7 +10,7 @@ function Header({ cartCount = 0 }) {
     <Navbar bg="light" expand="lg" className="mb-4 shadow-sm">
       <Container>
         <Navbar.Brand as={Link} to="/">
-          My eCom Store
+          FlowBuy
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
 
@@ -43,7 +43,7 @@ function Header({ cartCount = 0 }) {
               </svg>
               Cart
               {cartCount > 0 && (
-                <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                <span className="position-relative top-0 start-10 translate-middle badge rounded-pill bg-danger">
                   {cartCount}
                   <span className="visually-hidden">items in cart</span>
                 </span>

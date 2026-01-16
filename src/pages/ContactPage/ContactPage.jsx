@@ -46,6 +46,10 @@ const ContactFormPage = () => {
               <p className="lead text-muted">
                 Have a question or want to work together? I'd love to hear from
                 you.
+                <br /> <br />
+                <strong>
+                  You will be able to send in when form meets the requirements.
+                </strong>
               </p>
             </div>
 

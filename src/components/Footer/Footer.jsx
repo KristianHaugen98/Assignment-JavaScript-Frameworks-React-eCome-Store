@@ -6,7 +6,7 @@ const Footer = () => (
 
     <div className="footer-copyright text-center py-3">
       © 2026 Copyright
-      <a href="/"> Kristian Haugen</a>
+      <a href="/about"> Kristian Haugen</a>
     </div>
   </footer>
 );
