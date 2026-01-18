@@ -27,13 +27,6 @@ Each product has a unique ID for dynamic routing.
 - Submit button disabled until form is valid.
 - On submit: console.log form data and clear form.
 
-- Full name
-- Subject
-- Email
-- Message
-- Submit button
-- And shows error message if not fully implemented the requirements ( email must be valid email address, and the others have a number or characters of at least 3. )
-
 ## cartpage
 
 - Lists all added products with details (title, price/discount, image, rating, etc.)
