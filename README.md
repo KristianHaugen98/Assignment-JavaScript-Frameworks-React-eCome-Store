@@ -1,44 +1,51 @@
-# Purpose of this project:
+# React eCommerce Store
 
-This project demonstrates building a e-commerce store using **React** (a JavaScript library).  
-It uses **Bootstrap** for responsive styling and fetches products from an external API.  
-Each product has a unique ID for dynamic routing.
+A modern e-commerce webshop built with React as a JavaScript Frameworks assignment at Noroff.
 
-## Homepage:
+## Description
 
-- Displays all products in a responsive grid.
-- Live search bar that filters products as you type.
-- Each product card has "Add to Cart" and "View Product" buttons.
-- View Product links to the single product detail page using the product's unique ID.
+This project is a fully functional e-commerce store where users can browse products, search, add items to cart, and complete checkout.
 
-## About
+Key features:
 
-- Shows company vision and information.
-- Includes a personal card with title, image, and details.
+- Responsive product grid with live search
+- Product detail pages with dynamic routing
+- Shopping cart functionality
+- Checkout and order success page
+- Contact form with validation
+- About page
 
-## Contact:
+## Built With
 
-- Form with four required fields:
-  - Full Name (min 3 characters).
-  - Subject (min 3 characters).
-  - Email (must be valid email address).
-  - Message/Body (min 3 characters).
-- Live validation with red error messages below each field.
-- Submit button disabled until form is valid.
-- On submit: console.log form data and clear form.
+- React.js
+- JavaScript
+- Bootstrap
+- Vite
 
-## cartpage
+## Getting Started
 
-- Lists all added products with details (title, price/discount, image, rating, etc.)
-- Shows total price at the bottom.
-- "Proceed to Checkout" button.
+### Installing
 
-## Checkout & Success
+1. Clone the repo:
 
-- Checkout page (listing + total)
-- Checkout Success page: shows "Order Successful!", clears the cart, and has "Back to Store" link.
+   ```bash
+   git clone https://github.com/KristianHaugen98/Assignment-JavaScript-Frameworks-React-eCome-Store.git
 
-## Extra Polish
+   ```
 
-- Meta tags + Open Graph for SEO and social sharing.
-- Compressed About page image for faster loading.
+2. npm install
+
+3. npm run build
+
+Contributing
+
+Open a pull request for code review.
+
+Contact
+
+Kristian Haugen
+GitHub
+
+Acknowledgments
+
+Noroff School of Technology
