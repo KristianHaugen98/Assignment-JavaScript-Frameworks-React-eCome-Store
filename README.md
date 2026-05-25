@@ -37,15 +37,15 @@ Key features:
 
 3. npm run build
 
-Contributing
+## Contributing
 
 Open a pull request for code review.
 
-Contact
+## Contact
 
 Kristian Haugen
 GitHub
 
-Acknowledgments
+## Acknowledgments
 
 Noroff School of Technology
